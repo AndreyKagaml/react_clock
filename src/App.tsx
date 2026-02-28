@@ -42,6 +42,8 @@ export class App extends Component<{}, State> {
 
   componentWillUnmount(): void {
     window.clearInterval(this.timerId);
+    window.removeEventListener('contextmenu', this.handleHideClock);
+    window.removeEventListener('click', this.handleShowClock);
   }
 
   render() {
@@ -51,7 +53,7 @@ export class App extends Component<{}, State> {
       <div className="App">
         <h1>React clock</h1>
 
-        {hasClock && <Clock clockName={clockName} />}
+        {hasClock && <Clock name={clockName} />}
       </div>
     );
   }
